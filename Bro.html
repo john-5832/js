@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h1{
+            color: red;
+        }
+        #num{
+            background-color: aqua;
+            border-radius: 20px;
+            border: hidden;
+            color: rgb(68, 13, 231);
+        }
+        #num1{
+            background-color: rgb(240, 23, 161);
+            border-radius: 10px;
+            border: hidden;
+        }
+    </style>
+    <h1>Multiply the values</h1>
+    <input type="number" id="num">
+    <input type="number" id="num1">
+    <p id="num2" style="color: red;"></p>
+    <p id="num3" style="color: blueviolet;"></p>
+    <button onclick="myFunction()">Submit</button>
+    <script>
+        function myFunction() {
+            let A = document.getElementById('num').value;
+            let B = document.getElementById('num1').value;
+            let multiple = A * B;
+            
+            document.getElementById('num2').innerHTML = "multiple result: " + multiple;
+
+            let newvalue=(multiple)+1;
+
+            document.getElementById('num3').innerHTML = "add the value: " + newvalue;
+        }
+    </script>
+</body>
+</html>

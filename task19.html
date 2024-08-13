@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>check the number is integer or float</h1>
+    <input id="int">
+    <p id="demo"></p>
+    <button onclick="myfunction()">submit</button>
+    <script>
+        function myfunction(){
+            let a=document.getElementById('int').value
+
+            let b=Number.isInteger(parseFloat(a));
+
+            document.getElementById('demo').innerHTML="is the value is integer="+b;
+        }
+    </script>
+</html>

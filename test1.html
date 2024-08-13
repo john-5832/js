@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: aqua;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1{
+        color: brown;
+    }
+    h3{
+        color: gray;
+    }
+    #dropdown{
+        width: 200px;
+        height: 40px;
+        padding-left: 10px;
+        border-radius: 5px;
+        border: 3px solid gray;
+        color: grey;
+        font-weight: bold;
+    }
+    #search{
+        width: 180px;
+        height: 30px;
+        padding-left: 10px;
+        border: 3px solid gray;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    #button{
+        width: 80px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 5px;
+        color: white;
+        border: gray;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: cornflowerblue;
+    }
+    #button:hover{
+        background-color: royalblue;
+    }
+
+    table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fdfbfb;
+        border: 1px solid #0c0c0c;
+        border: 3px solid #ccc;
+            outline: none;
+    }
+
+       th, td {
+        padding: 10px;
+        text-align: left;
+        border: 2px solid #7b7575;
+        border: 3px solid #ccc;
+            outline: none;
+    }
+
+       th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+      td {
+        color: #181818;
+    }
+
+    
+</style>
+<body>
+    <h1>Employees Details</h1>
+    <h3>choose an employee to known about the details</h3>
+    <!-- <select id="dropdown">
+        <option value="all">All</option>
+        <option value="ram">Ram</option>
+        <option value="Shyam">Lakhan</option>
+        <option value="Sudhan">Sudhan</option>
+        <option value="krishna">krishna</option>
+    </select> -->
+
+    <h3>
+        <input type="text" onkeyup="filtered()" placeholder="search......." id="search">
+        <button onclick="sortTable()" class="button2" type="button">Sort A-Z</button>
+        <button onclick="sorttTable()" class="button3" type="button">Sort Z-A</button>
+    </h3>
+    <!-- <button id="button" onclick="filtered()">SEARCH</button> -->
+
+    <p id="table"></p>
+    <script>
+        var Employees = [ 
+        { 
+            "details":{ 
+            "emp_id":"101",         
+            "empname":"ram", 
+            "salary":"60000", 
+            "city":"pune",  
+            "mobile" : "8907632178"
+            }   
+        },  
+        { 
+            "details":{
+            "emp_id":"102",
+            "empname":"shyam", 
+            "salary":"50000", 
+            "city":"delhi", 
+            "mobile" :"9785637366"
+            }
+        }, 
+        { 
+            "details":{
+            "emp_id":"103",
+            "empname":"lakhan", 
+            "salary":"40000", 
+            "city":"bombay", 
+            "mobile" : "9785631954"
+            }
+        },
+        { 
+            "details":{
+            "emp_id":"104",
+            "empname":"krishna", 
+            "salary":"50000", 
+            "city":"chennai", 
+            "mobile" : "7373631954"
+            }
+        },  
+        { 
+            "details":{
+            "emp_id":"105",
+            "empname":"sudhan", 
+            "salary":"60000", 
+            "city":"kolkata", 
+            "mobile" :" 8375921224"
+            }
+        }] 
+
+        function display(Employees) {
+            var tableContainer = document.getElementById("table");
+            tableContainer.innerHTML = ""; 
+            var table = "<table border='1'>";
+                table += "<tr><td style='text-align: center;font-weight: 600;font-size:20px;'>product Name</td><td colspan='5' style='text-align: center;font-weight: 600;font-size:20px;'>product details</td></tr>";
+            table += "<tr style='text-align: center;font-weight: 600;font-size:17px;'><td>employee id</td><td>name</td><td>Salary</td><td>City</td><td>Phone number</td></tr>";
+            for (var i = 0; i < Employees.length; i++) {
+                table += "<tr style='text-align: center;font-weight:500;font-size:17px;'>";
+                table += "<td>" + Employees[i].details.emp_id + "</td>";
+                table += "<td>" + Employees[i].details.empname + "</td>";
+                table += "<td>" + Employees[i].details.salary + "</td>";
+                table += "<td>" + Employees[i].details.city + "</td>";
+                table += "<td>" + Employees[i].details.mobile + "</td>";
+                table += "</tr>";
+            }
+            table += "</table>";
+            tableContainer.innerHTML = table;
+        }
+
+        display(Employees)
+
+        // filtered table
+        function filtered(){
+            let search=document.getElementById('search').value.toLowerCase();
+            let filter = [];
+            for(var i=0;i<Employees.length;i++){
+                if (Employees[i].details.emp_id.toLowerCase().includes(search)) {
+                    filter.push(Employees[i]);
+                }
+                else if (Employees[i].details.empname.toLowerCase().includes(search)) {
+                    filter.push(Employees[i]);
+                }
+                else if (Employees[i].details.salary.toLowerCase().includes(search)) {
+                    filter.push(Employees[i]);
+                }
+                else if (Employees[i].details.city.toLowerCase().includes(search)) {
+                    filter.push(Employees[i]);
+                }
+                else if (Employees[i].details.mobile.toLowerCase().includes(search)) {
+                    filter.push(Employees[i]);
+                }
+            }
+            display(filter);
+        }
+
+        function sortTable() {
+        var sorted = Employees.slice().sort(function(a, b) { // slice creates the copy of array to compare
+        if (a.details.empname.toLowerCase() < b.details.empname.toLowerCase()) return -1;
+        if (a.details.empname.toLowerCase() > b.details.empname.toLowerCase()) return 1;
+        return 0;
+    });
+    display(sorted);
+    }
+
+        function sorttTable() {
+        var sorted = Employees.slice().sort(function(a, b) {
+        if (a.details.empname.toLowerCase() > b.details.empname.toLowerCase()) return -1;
+        if (a.details.empname.toLowerCase() < b.details.empname.toLowerCase()) return 1;
+        return 0;
+    });
+    display(sorted);
+    }
+    </script>
+</body>
+</html>

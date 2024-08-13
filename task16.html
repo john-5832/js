@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Email id:</label><input type="email" id="email" class="emailtxt">
+    <p id="num1" style="color: rebeccapurple;"></p>
+    <button type="submit" onclick="myfunction()">Submit</button>
+    <script>
+        function myfunction(){
+        let emailtxt=document.getElementById('email').value
+        let patterns = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
+
+        if (emailtxt == ""){
+            document.getElementById('num1').innerHTML="enter a email"
+        }
+        else if(!patterns.test(emailtxt)){
+            document.getElementById('num1').innerHTML="verify your email"
+        }
+        else{
+            document.getElementById('num1').innerHTML="is valid"
+        }
+    }
+    </script>
+</body>
+</html>

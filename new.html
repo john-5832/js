@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TABLE</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        background-color:azure;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    h3 {
+        text-align: center;
+        color: #555;
+    }
+
+    #dropdown {
+        margin: 20px auto;
+        display: block;
+    }
+
+    table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border: 1px solid #0c0c0c;
+        border: 3px solid #ccc;
+        outline: none;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 2px solid #7b7575;
+        border: 3px solid #ccc;
+        outline: none;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    td {
+        color: #181818;
+    }
+
+    td img {
+        width: 150px;
+        height: auto;
+    }
+    #dropdown {
+        font-family: Arial, sans-serif;
+        padding: 8px;
+        border: 3px solid #ccc;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        width: 200px;
+        cursor: pointer;
+        outline: none;
+    }
+    
+   
+    #dropdown option {
+        background-color: #fff;
+        color: #333;
+        
+    }
+    
+   
+    #dropdown option:checked {
+        background-color: #007bff;
+        color: #fff;
+        
+    }
+    #search {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 980px;
+            align-items: center;
+            border: 3px solid #ccc;
+            outline: none;
+            
+    
+        }
+
+        button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 1200px;
+
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+</style>
+</head>
+
+<body>
+    <h1>Product details</h1>
+
+    <h3>Choose any car from below dropdown list.</h3>
+    <select id="dropdown" onchange="filter()">
+        <option value="All">All</option>
+        <option value="HP">HP</option>
+        <option value="ASUS">ASUS</option>
+        <option value="DELL">DELL</option>
+        <option value="APPLE">APPLE</option>
+        <option value="VIVO">VIVO</option>
+        <option value="REDMI">REDMI</option>
+    </select>
+
+    <h3><input type="text" id="search" placeholder="Search... Here..."></body></h3>
+    <button onclick="filterTable()" type="button">SEARCH</button>
+
+    <div id="tableContainer"></div>
+  
+        <script>
+        var result = [
+            {
+                "name": "HP",
+                "details": {
+                    "Brand": "HP",
+                    "Model": "HP 15s Intel Core i3 12th Gen ",
+                    "Color": "Gray",
+                    "Price": "₹39,999",
+                    "Picture":"image/hp1.png"
+                }
+            },
+            {
+                "name": "ASUS",
+                "details": {
+                    "Brand": "ASUS",
+                    "Model": "ASUS Vivobook 15 Intel Core i3 11th Gen ",
+                    "Color": "Black",
+                    "Price": "₹35,990",
+                    "Picture":"image/asus.jpg"
+                }
+            },
+            {
+                "name": "HP",
+                "details": {
+                    "Brand": "HP",
+                    "Model": "HP Victus AMD Ryzen 5 Hexa Core 5600H",
+                    "Color": "Black",
+                    "Price": "₹58,490",
+                    "Picture":"image/hp2.jpg"
+                }
+            },
+            {
+                "name": "DELL",
+                "details": {
+                    "Brand": "DELL",
+                    "Model": "DELL Intel Core i3 12th Gen",
+                    "Color": "Gray",
+                    "Price": "₹35,890",
+                    "Picture":"image/del.jpeg"
+                }
+            },
+            {
+                "name": "APPLE",
+                "details": {
+                    "Brand": "APPLE",   
+                    "Model": "Apple 2020 Macbook Air Apple M1",
+                    "Color": "Space Grey",
+                    "Price": "₹73,990",
+                    "Picture":"image/apple.jpeg"
+                }
+            },
+            {
+                "name": "VIVO",
+                "details": {
+                    "Brand": "VIVO",   
+                    "Model": "vivo T2 Pro 5G ",
+                    "Color": "Space Grey",
+                    "Price": "₹23,999",
+                    "Picture":"image/vivo.webp"
+                }
+            },
+            {
+                "name":"REDMI",
+                "details": {
+                    "Brand": "REDMI",   
+                    "Model": "REDMI 12 5G",
+                    "Color": "Moonstone Silver",
+                    "Price": "₹14,999",
+                    "Picture":"image/redmi.webp"
+                }
+            },
+
+        ]; 
+        function display(result) {
+            var tableContainer = document.getElementById("tableContainer");
+            tableContainer.innerHTML = ""; 
+            var table = "<table border='1'>";
+                table += "<tr><td style='text-align: center;font-weight: 600;font-size:20px;'>product Name</td><td colspan='5' style='text-align: center;font-weight: 600;font-size:20px;'>product details</td></tr>";
+            table += "<tr style='text-align: center;font-weight: 600;font-size:17px;'><td>Name</td><td>Brand</td><td>Model</td><td>Color</td><td>Price</td><td>Picture</td></tr>";
+            for (var i = 0; i < result.length; i++) {
+                table += "<tr style='text-align: center;font-weight:500;font-size:17px;'>";
+                table += "<td>" + result[i].name + "</td>";
+                table += "<td>" + result[i].details.Brand + "</td>";
+                table += "<td>" + result[i].details.Model + "</td>";
+                table += "<td>" + result[i].details.Color + "</td>";
+                table += "<td>" + result[i].details.Price + "</td>";
+                table += "<td><img src='" + result[i].details.Picture + "'></td>";
+                table += "</tr>";
+            }
+            table += "</table>";
+            tableContainer.innerHTML = table;
+        }
+
+        // search box and filter
+
+      function filterTable() {
+            var search = document.getElementById("search").value.toLowerCase();
+            var filtered = [];
+            for (var i = 0; i < result.length; i++) {
+                if (result[i].name.toLowerCase().includes(search)) {
+                    filtered.push(result[i]);
+                }
+            }
+            display(filtered); 
+        }
+
+        
+      
+        // dropdown list
+
+         function filter(){
+            var dropdown=document.getElementById('dropdown').value
+
+            if(dropdown==="All"){
+                display(result);
+            }else{
+                var filtered=result.filter
+                (function(drop){
+                    return drop.name.toLowerCase() === dropdown.toLowerCase();
+                });
+                display(filtered);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+
+

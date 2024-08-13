@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pattern(){
+            // part one
+            for(i=1;i<=1;i++){
+                row = "";
+                for(j=1;j<=3;j++){
+                    if(j == 2){
+                        row += "1";
+                    }
+                    else{
+                        row += "\t";
+                    }
+                }
+                console.log(row);
+            }
+
+            // second part
+            for(i=1;i<=1;i++){
+                row = "";
+                for(j=1;j<=3;j++){
+                    if(j == 1|| j == 3){
+                        row += "2\t";
+                    }
+                    else{
+                        row += "4\t";
+                    }
+                }
+                console.log(row);
+            }
+
+            // third part
+            for(i=1;i<=1;i++){
+                row = "";
+                for(j=1;j<=3;j++){
+                    if(j == 2){
+                        row += "1\t";
+                    }
+                    else{
+                        row += "\t";
+                    }
+                }
+                console.log(row);
+            }
+        }
+        pattern();
+    </script>
+</body>
+</html>

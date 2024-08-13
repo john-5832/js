@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <h1 id="even" onclick="evennumber()">Even Numbers</h1>
+    <h1 id="fibonacci" onclick="series()">Fibonacci Series</h1>
+    <input type="number" id="num">
+    
+    <h1>Check Prime Number</h1>
+    <input type="number" id="pn">
+    <button type="button" onclick="checkPrime()">Prime</button><br>
+    
+    <script>
+        function evennumber() {
+            document.getElementById('even').innerHTML = "1 to 50 Even Numbers"
+            for (let i = 1; i <= 50; i++) {
+                if (i % 2 == 0) {
+                    console.log(i);
+                }
+            }
+        }
+
+        function series() {
+            document.getElementById('fibonacci').innerHTML = "Fibonacci Result"
+            let num = parseInt(document.getElementById('num').value);
+            let n1 = 0, n2 = 1, nextTerm;
+
+            for (let i = 1; i <= num; i++) {
+                console.log(n1);
+                nextTerm = n1 + n2;
+                n1 = n2;
+                n2 = nextTerm;
+            }
+        }
+
+        function checkPrime() {
+            let num = parseInt(document.getElementById('pn').value);
+            let isPrime = true;
+
+            if (num < 2) {
+                isPrime = false;
+            } else {
+                for (let i = 2; i < num; i++) {
+                    if (num % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            if (isPrime) {
+                alert(num + " is a prime number");
+            } else {
+                alert(num + " is not a prime number");
+            }
+        }
+
+        // Additional Multiplication Table
+        let n = 3;
+        for (let i = 1; i <= 10; i++) {
+            document.write(n + " * " + i + " = " + n * i + "<br>");
+        }
+    </script>
+</body>
+
+</html>

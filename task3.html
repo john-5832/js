@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Array</label>
+    <p id="num"></p>
+    <p id="num1"></p>
+    <p id="num2"></p>
+    <p id="num3"></p>
+    <p id="num4"></p>
+    <script>
+            let str1=[9,8,4,3,5];
+            let str2=[8,6,0,4,6];
+
+            let str3=str1.concat(str2);
+            document.getElementById('num').innerHTML= "combine array="+str3;
+
+            let unique =[...new Set(str3)];
+            document.getElementById('num1').innerHTML="unique value="+unique;
+
+            let sort=unique.sort()
+            document.getElementById('num2').innerHTML="sorted numbers="+ sort;
+
+            let centervalue=sort[Math.floor(sort.length/2)]
+            document.getElementById('num3').innerHTML="center value="+ centervalue;
+
+            // add=2 center value
+            let cenval=sort[centervalue];
+            
+            for(i=centervalue;i<sort.length;i++){
+                sort[i]+= 2;
+            }
+            document.getElementById('num4').innerHTML=sort
+    </script>
+</body>
+</html>

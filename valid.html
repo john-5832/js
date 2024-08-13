@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+  
+</head>
+<body>
+    
+    <h1>Registration Form</h1>
+    <div class="login">
+    <br> 
+    <label>Name:</label> <input type="textbox" id="nametext" class="nametxt">
+    <p id="num" style="color: rebeccapurple;"></p>
+    <br>
+    <br>
+    <label>Email id:</label><input type="email" id="email" class="emailtxt">
+    <p id="num1" style="color: rebeccapurple;"></p>
+    <br>
+    <BR>
+    <label>Password:</label><input type="text" id="pass">
+    <p id="num2" style="color: rebeccapurple;"></p>
+    <br>
+    <br>
+    <label>Confirm Password:</label><input type="text" id="con-pass">
+    <p id="num3" style="color: rebeccapurple;"></p>
+    <br>
+    <br>
+    <label>Enter a phone number</label><br>
+             <input type = "tel" id="phone">
+             <p id = number style="color: rebeccapurple;"></p>
+             <br>
+             <br>
+    <label>Gender</label><br>
+             <input type="radio" id="male" name="radio" value="MALE">
+             <label for="male">MALE</label><br>
+             <input type="radio" id="female" name="radio" value="FEMALE">
+             <label for="female">FEMALE</label>
+             <p id="num4" style="color: rebeccapurple;"></p>
+             <br>
+             <br>
+    <label>Known Languages</label><br>
+             <input type="checkbox" id="Tamil" name="checkbox" value="TAMIL">
+             <label for="Tamil">Tamil</label><br>
+             <input type="checkbox" id="English" name="checkbox" value="ENGLISH">
+             <label for="English">English</label><br>
+             <input type="checkbox" id="Hindi" name="checkbox" value="HINDI">
+             <label for="Hindi">Hindi</label><br><br> 
+             <p id="num5" style="color: rebeccapurple;"></p>
+    <label>Date of Birth:</label><br>
+    <input type="date" id="DATE">
+    <p id="num6" style="color: rebeccapurple;"></p>
+    <br>
+    <br>
+    <label>Address:</label><br>
+    <textarea name="text" id="add-1"></textarea>
+    <p id="num7" style="color: rebeccapurple;"></p>
+    <br>
+    <br>                 
+    <button type="submit" onclick="myfunction()">Submit</button>
+</div>
+    
+<script>
+
+    function myfunction(){
+        let nametxt=document.getElementById('nametext').value
+         let pattern = /^[a-zA-Z ]{2,30}$/;
+
+        if (nametxt == "")
+        {
+            document.getElementById("num").innerHTML="enter your name"
+        }
+        else if(!pattern.test(nametxt)){
+            document.getElementById("num").innerHTML="enter a valid name"
+        }
+        else{
+            document.getElementById("num").innerHTML=""
+        }
+        // ---------------------email-----------------------
+        let emailtxt=document.getElementById('email').value
+        let patterns = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+        if (emailtxt == ""){
+            document.getElementById('num1').innerHTML="enter a email"
+        }
+        else if(!patterns.test(emailtxt)){
+            document.getElementById('num1').innerHTML="verify your email"
+        }
+        else{
+            document.getElementById('num1').innerHTML=""
+        }
+        //------------------- password------------------
+        let password=document.getElementById('pass').value
+        let pspattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+        if (password==""){
+            document.getElementById('num2').innerHTML="enter a password"
+        }
+        else if(!pspattern.test(password)){
+            document.getElementById('num2').innerHTML="create a strong password"
+        }
+        else{
+            document.getElementById('num2').innerHTML=""
+        }
+        //--------------------- confirm pass------------------------
+        let conpassword=document.getElementById('con-pass').value
+
+        if(conpassword==""){
+            document.getElementById('num3').innerHTML="enter a confirm password"
+        }
+        else if(password == conpassword){
+            document.getElementById('num3').innerHTML=""
+        }
+        else{
+            document.getElementById('num3').innerHTML="enter a correct password"
+        }
+    // --------------------gender---------------------
+    if (male.checked){
+        document.getElementById('num4').innerHTML=""
+    }
+    else if(female.checked){
+        document.getElementById('num4').innerHTML=""
+    }
+    else{
+        document.getElementById('num4').innerHTML="click one option"
+    }
+    // ------------------known language------------------
+    if (Tamil.checked){
+        document.getElementById('num5').innerHTML=""
+    }
+    else if(English.checked){
+        document.getElementById('num5').innerHTML=""
+    }
+    else if(Hindi.checked){
+        document.getElementById('num5').innerHTML=""
+    }
+    else{
+        document.getElementById('num5').innerHTML="click one option"
+    }
+    // ----------------DATE------------------
+    // if(DATE.checked){
+    //     document.getElementById('num6').innerHTML=""
+    // }
+    // else{
+    //     document.getElementById('num6').innerHTML="create a date"
+    // }
+    // ----------------address--------------
+    let address=document.getElementById('add-1').value
+    if(address ==""){
+        document.getElementById('num7').innerHTML="enter a address"
+    }
+    else{
+        document.getElementById('num7').innerHTML=""
+    }
+    // --------------------phone number-------------
+    let phno = document.getElementById('phone').value
+        let ptn = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/;
+        if(phno == "")
+        {
+            document.getElementById("number").innerHTML="enter your phone number"
+        }
+        else if(!ptn.test(phno)){
+            document.getElementById("number").innerHTML="enter the valid phone number"
+        }
+        else{
+            document.getElementById("number").innerHTML=""
+        }
+    }
+</script>  
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Calculation Example</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+    <h2>Date Calculation Example</h2>
+    <label for="dateInput">Enter a date:</label>
+    <input type="date" id="dateInput">
+    <button onclick="calculateDates()">Calculate</button>
+
+    <p id="results"></p>
+
+    <script>
+        function calculateDates() {
+            var inputDate = document.getElementById('dateInput').value;
+            var currentDate = new Date();
+            var inputDateObj = new Date(inputDate);
+
+            if (inputDate === '') {
+                alert('Please enter a valid date.');
+                return;
+            }
+
+            if (inputDateObj < currentDate) {
+                alert('Please enter a date on or after today.');
+                return;
+            }
+
+            var fifteenDaysFromNow = new Date(currentDate);
+            fifteenDaysFromNow.setDate(currentDate.getDate() + 15);
+
+            if (inputDateObj <= fifteenDaysFromNow) {
+                var daysDifference = Math.ceil((inputDateObj - currentDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('results').innerHTML = 'The date entered is ' + daysDifference + ' days after today.';
+            } else {
+                var daysDifference = Math.ceil((currentDate - inputDateObj) / (1000 * 60 * 60 * 24));
+                document.getElementById('results').innerHTML = 'The date entered is ' + daysDifference + ' days before today.';
+            }
+        }
+    </script>
+</body>
+</html>

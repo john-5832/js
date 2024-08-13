@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>find the consonants and vowels</h1>
+    <input type="text" id="getvalue">
+    <button onclick="myfunction()">submit</button>
+    <table>
+        <tr>
+            <th>category</th>
+            <th>numbers</th>
+        </tr>
+        <tr>
+            <td>consonants</td>
+            <td id="consonantcount">0</td>
+        </tr>
+        <tr>
+            <td>vowels</td>
+            <td id="vowelcount">0</td>
+        </tr>
+    </table>
+
+    <style>
+        table{
+            border-style: solid;
+        }
+    </style>
+    <script>
+        function myfunction(){
+        let sentence1 = document.getElementById("getvalue").value.toLowerCase();
+
+        const vowels = "aeiou";
+        const consonants = "bcdfghjklmnpqrstvwxyz";
+            
+        let vCount = 0;
+        let cCount = 0;
+
+        for (let ans of sentence1) {
+        if (vowels.includes(ans)) {
+        vCount++;
+        } 
+        else if (consonants.includes(ans)) {
+        cCount++;
+    }
+}
+
+        document.getElementById("consonantcount").innerHTML = cCount;
+        document.getElementById("vowelcount").innerHTML = vCount;
+        }
+
+    </script>
+</body>
+</html>

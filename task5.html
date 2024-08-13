@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>check anagram</h1>
+    <input type="text" id="str1">
+    <input type="text" id="str2">
+    <p id="num"></p>
+    <button onclick="myfunction()">submit</button>
+    <script>
+        function myfunction() {
+            let a =document.getElementById('str1').value
+            let b =document.getElementById('str2').value
+    
+            let c = a.length;
+            let d = b.length;
+    
+            if (c !== d) {
+                document.getElementById('num').innerHTML = "Not valid";
+            }
+            
+            let e = a.split('').sort().join('');
+            let f = b.split('').sort().join('');
+    
+            if (e===f) {
+                document.getElementById('num').innerHTML = "True";
+            } else {
+                document.getElementById('num').innerHTML = "False";
+            }
+        }
+    </script>
+    
+</body>
+</html>

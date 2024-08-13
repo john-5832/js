@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>date selection</h1>
+    <input id="cur-date" type="date">
+    <script>
+         let today = new Date();
+         let dd = String(today.getDate()).padStart(2, '0');
+         let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+         let yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("cur-date").setAttribute("min", today);
+
+         for(i=today;i<15;i++){
+            today.setDate(today.getDate() + 1);
+         }
+    </script>
+</body>
+</html>

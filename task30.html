@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function transformString(input) {
+        let transformed = '';
+   
+        for (let i = 0; i < input.length; i++) {
+        let char = input.charAt(i);
+        let charCode = input.charCodeAt(i);
+
+        switch (char) {
+            case 'A':
+                transformed += String.fromCharCode(charCode + 6); // 'A' -> 'G'
+                break;
+            case 'B':
+                transformed += String.fromCharCode(charCode + 4); // 'B' -> 'F'
+                break;
+            case 'D':
+                transformed += String.fromCharCode(charCode + 1); // 'D' -> 'E'
+                break;
+            case 'E':
+                transformed += String.fromCharCode(charCode - 2); // 'E' -> 'C'
+                break;
+            case 'F':
+                transformed += String.fromCharCode(charCode - 4); // 'F' -> 'B'
+                break;
+            default:
+                transformed += char; // For any other character, keep it unchanged
+                break;
+        }
+    }
+
+    return transformed;
+}
+
+// Example usage:
+
+let input = "ABDEF";
+let output = transformString(input);
+console.log(output);  // Output will be "GFECB"
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pattern Output</title>
+</head>
+<body>
+
+<script>
+function printPattern(n) {
+    // Upper part of the pattern
+    for (let i = 1; i <= n; i++) {
+        let line = "";
+        
+        // Adding initial spaces
+        for (let j = 0; j < n - i; j++) {
+            line += "\t";
+        }
+        
+        // Adding numbers in ascending order
+        for (let j = 1; j <= i; j++) {
+            line += j + "\t";
+        }
+        
+        // Adding numbers in descending order
+        for (let j = i - 1; j >= 1; j--) {
+            line += j + "\t";
+        }
+        
+        // Output each line
+        console.log(line);
+    }
+    
+    // Lower part of the pattern (mirrored upper part)
+    for (let i = n - 1; i >= 1; i--) {
+        let line = "";
+        
+        // Adding initial spaces
+        for (let j = 0; j < n - i; j++) {
+            line += "\t";
+        }
+        
+        // Adding numbers in ascending order
+        for (let j = 1; j <= i; j++) {
+            line += j + "\t";
+        }
+        
+        // Adding numbers in descending order
+        for (let j = i - 1; j >= 1; j--) {
+            line += j + "\t";
+        }
+        
+        // Output each line
+        console.log(line);
+    }
+}
+
+// Test with input 3
+printPattern(4);
+</script>
+
+</body>
+</html>
